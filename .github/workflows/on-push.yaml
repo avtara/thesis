@@ -33,7 +33,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: gavv/pull-request-artifacts@v1.0.0
         with:
-          commit: ${{ github.event.pull_request.head.sha }}
+          commit: ${{ github.event.push.head.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           artifacts-branch: pdf-dump
           artifacts: |
