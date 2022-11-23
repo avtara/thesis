@@ -25,7 +25,7 @@ jobs:
 
       - name: Check if PDF exists
         run: |
-          ls ${{ github.workspace }}/thesis
+          ls ${{ github.workspace }}/
           FILE=${{ github.workspace }}/thesis.pdf
           test -f "$file" || echo "$file"
 
