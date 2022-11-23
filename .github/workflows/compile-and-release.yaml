@@ -14,18 +14,15 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           # working_directory: skripsi
           root_file: |
             proposal.tex
-
       - name: Check if PDF exists
         run: |
-          ls ${{ github.workspace }}/thesis
-
+          ls ${{ github.workspace }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
