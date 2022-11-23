@@ -20,7 +20,6 @@ jobs:
         with:
           # working_directory: skripsi
           root_file: |
-            # thesis.tex
             proposal.tex
 
       - name: Check if PDF exists
@@ -34,7 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: |
-            # thesis.pdf
             proposal.pdf
           name: Release ${{ github.ref }}
           draft: false
