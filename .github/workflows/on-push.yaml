@@ -1,7 +1,7 @@
 name: Compile Latex and Release PDF
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -15,25 +15,22 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           # working_directory: skripsi
           root_file: |
             proposal.tex
-
       - name: Check if PDF exists
         run: |
-          ls ${{ github.workspace }}/
+          ls ${{ github.workspace }}
           FILE=${{ github.workspace }}/thesis.pdf
           test -f "$file" || echo "$file"
-
       - name: Create Artifact On Pull Request
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'pull_request' }}
         uses: gavv/pull-request-artifacts@v1.0.0
         with:
-          commit: ${{ github.event.push.head.sha }}
+          commit: ${{ github.event.pull_request.head.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           artifacts-branch: pdf-dump
           artifacts: |
