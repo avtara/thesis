@@ -19,6 +19,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           # working_directory: skripsi
+          latexmk_use_xelatex: true
           root_file: |
             proposal.tex
       - name: Check if PDF exists
